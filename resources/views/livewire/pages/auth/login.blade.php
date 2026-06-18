@@ -1,6 +1,7 @@
 <?php
-
 use App\Livewire\Forms\LoginForm;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
@@ -15,11 +16,34 @@ new #[Layout('layouts.guest')] class extends Component {
     {
         $this->validate();
 
-        $this->form->authenticate();
+        try {
+            // 1. Intentar login normal de administradores
+            $this->form->authenticate();
 
-        Session::regenerate();
+            Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+
+            return;
+        } catch (\Exception $e) {
+            // 2. Si no es administrador, buscar en semilleros
+            $semillero = DB::table('semilleros')->where('usuario', $this->form->email)->orWhere('correo', $this->form->email)->first();
+
+            if (!$semillero || !Hash::check($this->form->password, $semillero->contrasena)) {
+                $this->addError('form.email', 'Las credenciales no son correctas.');
+                return;
+            }
+
+            // 3. Guardar sesión del semillero
+            Session::regenerate();
+
+            Session::put('semillero_id', $semillero->id);
+            Session::put('semillero_usuario', $semillero->usuario);
+            Session::put('tipo_usuario', 'semillero');
+
+            // 4. Mandarlo a su panel semiellero-AQUI CAMBIAR AL NOMBRE REAL DE TU VISTA
+            $this->redirect(route('semillero.ejemplo_panel', absolute: false), navigate: true);
+        }
     }
 }; ?>
 <div class="login-bg flex items-center justify-center px-4">

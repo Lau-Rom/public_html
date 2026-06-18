@@ -16,6 +16,15 @@ Route::view('profile', 'profile')
 
 require __DIR__ . '/auth.php';
 
+//AQUI CAMBIAR AL NOMBRE REAL DE TU VISTA
+Route::get('/semillero/ejemplo_panel', function () {
+    if (session('tipo_usuario') !== 'semillero') {
+        return redirect()->route('login');
+    }
+
+    return view('semillero.ejemplo_panel');
+})->name('semillero.ejemplo_panel');
+
 
 // Panel administrador
 Route::prefix('admin')->name('admin.')->group(function () {
