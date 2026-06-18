@@ -4,28 +4,116 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Sistema Nacional de Fomento Musical</title>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        body {
+            margin: 0 !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+            background: #4A102B !important;
+        }
+
+        .login-page {
+            min-height: 100vh !important;
+            background: linear-gradient(135deg, #4A102B, #6A1B3F, #7D244A) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 24px !important;
+        }
+
+        .login-box {
+            width: 100% !important;
+            max-width: 430px !important;
+        }
+
+        .login-header {
+            text-align: center !important;
+            margin-bottom: 24px !important;
+        }
+
+        .login-header h1 {
+            color: #fff !important;
+            font-size: 28px !important;
+            font-weight: 700 !important;
+            margin: 0 0 8px !important;
+        }
+
+        .login-header p {
+            color: #F5F1E8 !important;
+            margin: 0 !important;
+            font-size: 16px !important;
+        }
+
+        .login-card {
+            background: #fff !important;
+            border-radius: 18px !important;
+            padding: 32px !important;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .28) !important;
+            border-top: 6px solid #B38E5D !important;
+        }
+
+        .login-card label {
+            color: #4A102B !important;
+            font-weight: 600 !important;
+        }
+
+        .login-card input[type="text"],
+        .login-card input[type="email"],
+        .login-card input[type="password"] {
+            width: 100% !important;
+            border: 1px solid #D1D5DB !important;
+            border-radius: 10px !important;
+            padding: 12px 14px !important;
+            background: #F9FAFB !important;
+            box-sizing: border-box !important;
+        }
+
+        .login-card button {
+            width: 100% !important;
+            background: linear-gradient(135deg, #6A1B3F, #4A102B) !important;
+            color: white !important;
+            border-radius: 10px !important;
+            padding: 13px 20px !important;
+            font-weight: 700 !important;
+            margin-top: 16px !important;
+        }
+
+        /* Forzar color del texto escrito */
+
+        .login-card input,
+        .login-card input:focus,
+        .login-card input:active,
+        .login-card input:visited {
+            color: #111827 !important;
+            -webkit-text-fill-color: #111827 !important;
+        }
+
+        /* Placeholder */
+
+        .login-card input::placeholder {
+            color: #6B7280 !important;
+            opacity: 1 !important;
+        }
+    </style>
 </head>
 
-<body class="font-sans text-gray-900 antialiased">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+<body>
+    <main class="login-page">
+        <div class="login-box">
 
+            <div class="login-header">
+                <h1>Sistema Nacional de Fomento Musical</h1>
+            </div>
 
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-700 shadow-md overflow-hidden sm:rounded-lg">
+            <div class="login-card">
+                {{ $slot }}
+            </div>
 
-            {{ $slot }}
         </div>
-    </div>
+    </main>
 </body>
 
 </html>
