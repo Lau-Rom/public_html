@@ -1,16 +1,44 @@
 <x-app-layout>
-    <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <h1 class="text-2xl font-bold mb-4">
-                Docentes
-            </h1>
+    <div class="docentes-dashboard">
 
+        <div class="docentes-container">
 
-            <a href="{{ route('admin.docentes.create') }}" class="block p-2 hover:bg-gray-100 rounded">
-                Nuevo docente
-            </a>
+            <div class="docentes-header">
+                <h1>Panel de Docentes</h1>
+                <p>Selecciona la acción que deseas realizar.</p>
+            </div>
+
+            <div class="docentes-menu-grid">
+
+                <a href="{{ route('admin.docentes.create') }}" class="docentes-menu-card">
+                    <span>+</span>
+                    <h3>Agregar docente</h3>
+                    <p>Registrar un nuevo docente en el sistema.</p>
+                </a>
+
+                <a href="{{ route('admin.docentes.buscar') }}" class="docentes-menu-card">
+                    <span>🔍</span>
+                    <h3>Buscar docente</h3>
+                    <p>Consultar docentes registrados.</p>
+                </a>
+
+                <a href="{{ route('admin.docentes.edit') }}" class="docentes-menu-card">
+                    <span>✏️</span>
+                    <h3>Modificar docente</h3>
+                    <p>Actualizar información de un docente.</p>
+                </a>
+
+                <a href="{{ route('admin.docentes.eliminar') }}" class="docentes-menu-card">
+                    <span>🗑️</span>
+                    <h3>Eliminar docente</h3>
+                    <p>Dar de baja o eliminar un docente.</p>
+                </a>
+
+            </div>
 
         </div>
+
     </div>
+
 </x-app-layout>
