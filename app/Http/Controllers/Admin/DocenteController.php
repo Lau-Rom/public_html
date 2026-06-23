@@ -15,6 +15,7 @@ use App\Models\Docente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+
 class DocenteController extends Controller
 {
     public function index()
@@ -198,6 +199,27 @@ class DocenteController extends Controller
             MB_CASE_TITLE,
             'UTF-8'
         );
+    }
+
+    public function buscar(Request $request)
+    {
+        $busqueda = $request->input('buscar');
+
+        $docentes = Docente::query()
+            ->when($busqueda, function ($query, $busqueda) {
+                $query->where('curp', 'LIKE', "%{$busqueda}%")
+                    ->orWhere('correo', 'LIKE', "%{$busqueda}%")
+                    ->orWhere('usuario', 'LIKE', "%{$busqueda}%")
+                    ->orWhere('nombre', 'LIKE', "%{$busqueda}%")
+                    ->orWhere('apellido_paterno', 'LIKE', "%{$busqueda}%")
+                    ->orWhere('apellido_materno', 'LIKE', "%{$busqueda}%");
+            })
+            ->orderBy('nombre', 'asc')
+            ->get();
+
+        $totalDocentes = Docente::count();
+
+        return view('admin.docentes.buscar', compact('docentes', 'totalDocentes', 'busqueda'));
     }
 
     public function show(string $id)

@@ -36,10 +36,16 @@ Route::get('/docente/menu_docente', function () {
     return view('docente.menu_docente');
 })->name('docente.menu_docente');
 
+
 // Panel administrador
 Route::prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('docentes/buscar', [DocenteController::class, 'buscar'])
+        ->name('docentes.buscar');
+
     Route::resource('docentes', DocenteController::class);
 });
+
 Route::prefix('admin/diplomados')->name('admin.diplomados.')->group(function () {
     Route::get('/', [DiplomadoController::class, 'index'])->name('index');
     Route::get('/crear', [DiplomadoController::class, 'create'])->name('create');

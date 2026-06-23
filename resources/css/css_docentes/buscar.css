@@ -1,0 +1,183 @@
+/* ===========================
+   DISEÑO PARA VISTA BUSCAR
+=========================== */
+
+.buscar-docentes-dashboard {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 35px;
+    background: #f4efe8;
+}
+
+.buscar-docentes-content {
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
+.docentes-header {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid #e7decf;
+    box-shadow: 0 12px 30px rgba(97, 18, 50, 0.08);
+    margin-bottom: 22px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+
+.docentes-header h1 {
+    color: #611232;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.docentes-header p {
+    color: #6b5f58;
+    font-size: 15px;
+}
+
+.docentes-total {
+    background: #611232;
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.docentes-search-form {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px;
+    border: 1px solid #e7decf;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.docentes-search-input {
+    flex: 1;
+    width: 100%;
+    border: 1px solid #d8c9b8;
+    border-radius: 12px;
+    padding: 12px 14px;
+    outline: none;
+}
+
+.docentes-search-input:focus {
+    border-color: #611232;
+}
+
+.docentes-search-btn,
+.docentes-clear-btn {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.docentes-search-btn {
+    background: #611232;
+    color: #ffffff;
+}
+
+.docentes-clear-btn {
+    background: #ece8e1;
+    color: #611232;
+}
+
+.docentes-table-box {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e7decf;
+    box-shadow: 0 12px 30px rgba(97, 18, 50, 0.08);
+    overflow-x: auto;
+}
+
+.docentes-table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.docentes-table th {
+    background: #611232;
+    color: #ffffff;
+    padding: 14px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.docentes-table td {
+    padding: 14px;
+    border-bottom: 1px solid #eee4d8;
+    color: #3d332e;
+    font-size: 14px;
+}
+
+.docentes-table tr:hover {
+    background: #faf7f2;
+}
+
+.docentes-empty {
+    text-align: center;
+    padding: 28px;
+    color: #777;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 1024px) {
+    .buscar-docentes-dashboard {
+        padding: 25px;
+    }
+
+    .docentes-table {
+        min-width: 850px;
+    }
+}
+
+@media (max-width: 640px) {
+    .buscar-docentes-dashboard {
+        padding: 20px;
+    }
+
+    .docentes-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+    }
+
+    .docentes-header h1 {
+        font-size: 26px;
+    }
+
+    .docentes-total {
+        width: 100%;
+        text-align: center;
+    }
+
+    .docentes-search-form {
+        flex-direction: column;
+    }
+
+    .docentes-search-input,
+    .docentes-search-btn,
+    .docentes-clear-btn {
+        width: 100%;
+    }
+
+    .docentes-table {
+        min-width: 800px;
+    }
+}

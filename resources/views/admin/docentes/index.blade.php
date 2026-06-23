@@ -22,7 +22,7 @@
                     <p>Registrar un nuevo docente en el sistema.</p>
                 </a>
 
-                <a href="#" class="docentes-menu-card">
+                <a href="{{ route('admin.docentes.buscar') }}" class="docentes-menu-card">
                     <span>🔍</span>
                     <h3>Buscar docente</h3>
                     <p>Consultar docentes registrados.</p>

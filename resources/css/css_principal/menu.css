@@ -1,0 +1,81 @@
+/* ===========================
+   MENÚ LATERAL
+=========================== */
+
+.admin-menu-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid #e7decf;
+    box-shadow: 0 12px 30px rgba(97, 18, 50, 0.10);
+}
+
+.admin-menu-box h3 {
+    color: #611232;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #ddc9a3;
+}
+
+.admin-menu-box ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-menu-box li {
+    margin-bottom: 10px;
+}
+
+.admin-menu-box a {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: #f8f5ef;
+    color: #235b4e;
+    text-decoration: none;
+    font-weight: 700;
+    border-left: 4px solid transparent;
+    transition: all .25s ease;
+}
+
+.admin-menu-box a:hover {
+    background: #611232;
+    color: white;
+    border-left-color: #ddc9a3;
+    transform: translateX(4px);
+}
+
+/* ===========================
+   TARJETA BIENVENIDA
+=========================== */
+
+.admin-welcome-card {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 40px;
+    border: 1px solid #e7decf;
+    border-top: 8px solid #611232;
+    box-shadow: 0 12px 30px rgba(97, 18, 50, 0.10);
+}
+
+.admin-welcome-card h1 {
+    color: #235b4e;
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.admin-welcome-card p {
+    color: #374151;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.admin-welcome-card p:first-of-type {
+    font-size: 22px;
+    font-weight: 700;
+    color: #611232;
+}

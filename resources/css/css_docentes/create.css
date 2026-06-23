@@ -1,0 +1,235 @@
+/* ===========================
+   FORMULARIO DOCENTES
+=========================== */
+
+.docente-form-dashboard {
+    min-height: calc(100vh - 70px);
+    background: #ECE8E1;
+    padding: 35px;
+}
+
+.docente-form-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.docente-form-card {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 35px;
+    border: 1px solid #e7decf;
+    border-top: 8px solid #611232;
+    box-shadow: 0 12px 30px rgba(97, 18, 50, 0.10);
+}
+
+.docente-form-card h1 {
+    color: #235b4e;
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+/* ===========================
+   GRUD DEL FORMULARIO
+=========================== */
+
+.docente-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.docente-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.docente-form-group label {
+    color: #611232;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.docente-form-group input,
+.docente-form-group select {
+    width: 100%;
+    border: 1px solid #d8cdbb;
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #374151;
+    background: #fdfcf9;
+    font-size: 15px;
+    outline: none;
+    transition: all .25s ease;
+}
+
+.docente-form-group input:focus,
+.docente-form-group select:focus {
+    border-color: #611232;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(97, 18, 50, 0.12);
+}
+
+/* ===========================
+   SEMILLEROS
+=========================== */
+
+.docente-semilleros {
+    margin-top: 30px;
+}
+
+.docente-semilleros > label {
+    display: block;
+    color: #611232;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.docente-semilleros-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    border: 1px solid #d8cdbb;
+    border-radius: 16px;
+    padding: 20px;
+    background: #f8f5ef;
+}
+
+.docente-check-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #e7decf;
+    color: #374151;
+    font-weight: 600;
+}
+
+.docente-check-label input {
+    width: 18px;
+    height: 18px;
+    accent-color: #611232;
+}
+
+/* ===========================
+   BOTONES
+=========================== */
+
+.docente-form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 14px;
+}
+
+.btn-guardar-docente {
+    background: #235b4e;
+    color: white;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.btn-guardar-docente:hover {
+    background: #611232;
+    transform: translateY(-2px);
+}
+/* ===========================
+   SECCIONES DEL FOMULARIO DOCENTE
+=========================== */
+.btn-cancelar-docente {
+    background: #6b7280;
+    color: white;
+    text-decoration: none;
+    padding: 13px 24px;
+    border-radius: 12px;
+    font-weight: 800;
+    transition: all .25s ease;
+}
+
+.btn-cancelar-docente:hover {
+    background: #4b5563;
+    transform: translateY(-2px);
+}
+.docente-form-section {
+    margin-bottom: 35px;
+    padding: 25px;
+    background: #f8f5ef;
+    border-radius: 18px;
+    border: 1px solid #e7decf;
+}
+
+.docente-form-section h2 {
+    color: #611232;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #ddc9a3;
+}
+/* ===========================
+   alertas para el create de docentes
+=========================== */
+.alert {
+    padding: 15px 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #ecfdf5;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-danger {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.alert-danger ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.text-error {
+    display: block;
+    margin-top: 6px;
+    color: #dc2626;
+    font-size: 13px;
+    font-weight: 500;
+}
+.alert-fixed {
+    position: fixed;
+    top: 90px;
+    right: 25px;
+    z-index: 9999;
+    min-width: 300px;
+    animation: fadeOut 4s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+    }
+}

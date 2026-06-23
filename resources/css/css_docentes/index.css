@@ -1,0 +1,82 @@
+/* ===========================
+   PANEL DOCENTES
+=========================== */
+
+.docentes-dashboard {
+    min-height: calc(100vh - 70px);
+    background: #ECE8E1;
+    padding: 35px;
+}
+
+.docentes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.docentes-header {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 35px;
+    border-top: 8px solid #611232;
+    box-shadow: 0 12px 30px rgba(97, 18, 50, 0.10);
+    margin-bottom: 30px;
+}
+
+.docentes-header h1 {
+    color: #235b4e;
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.docentes-header p {
+    color: #611232;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ===========================
+   MENÚ DE OPCIONES
+=========================== */
+
+.docentes-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.docentes-menu-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px 24px;
+    text-decoration: none;
+    border: 1px solid #e7decf;
+    border-left: 6px solid #235b4e;
+    box-shadow: 0 12px 30px rgba(97, 18, 50, 0.10);
+    transition: all .25s ease;
+}
+
+.docentes-menu-card:hover {
+    transform: translateY(-6px);
+    border-left-color: #611232;
+    background: #f8f5ef;
+}
+
+.docentes-menu-card span {
+    display: block;
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.docentes-menu-card h3 {
+    color: #611232;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.docentes-menu-card p {
+    color: #4b5563;
+    font-size: 15px;
+    line-height: 1.5;
+}
