@@ -369,3 +369,123 @@
     padding-bottom: 12px;
     border-bottom: 2px solid #ddc9a3;
 }
+/* ===========================
+   alertas para el create de docentes
+=========================== */
+.alert {
+    padding: 15px 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #ecfdf5;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-danger {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.alert-danger ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.text-error {
+    display: block;
+    margin-top: 6px;
+    color: #dc2626;
+    font-size: 13px;
+    font-weight: 500;
+}
+.alert-fixed {
+    position: fixed;
+    top: 90px;
+    right: 25px;
+    z-index: 9999;
+    min-width: 300px;
+    animation: fadeOut 4s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+    }
+}
+/* ===========================
+   RESPONSIVE PARA: 
+   Dashboard admin
+   Panel de docentes
+   Formulario de docentes
+=========================== */
+
+@media (max-width: 1024px) {
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .docentes-menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .docente-form-grid,
+    .docente-semilleros-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-dashboard,
+    .docentes-dashboard,
+    .docente-form-dashboard {
+        padding: 20px;
+    }
+
+    .admin-welcome-card,
+    .docentes-header,
+    .docente-form-card {
+        padding: 24px;
+    }
+
+    .admin-welcome-card h1,
+    .docentes-header h1,
+    .docente-form-card h1 {
+        font-size: 26px;
+    }
+
+    .docentes-menu-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .docentes-menu-card {
+        padding: 24px 20px;
+    }
+
+    .docente-form-actions {
+        flex-direction: column;
+    }
+
+    .btn-guardar-docente,
+    .btn-cancelar-docente {
+        width: 100%;
+        text-align: center;
+    }
+}

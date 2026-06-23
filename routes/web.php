@@ -28,6 +28,13 @@ Route::get('/semillero/ejemplo_panel', function () {
     return view('semillero.ejemplo_panel');
 })->name('semillero.ejemplo_panel');
 
+Route::get('/docente/menu_docente', function () {
+    if (session('tipo_usuario') !== 'docente') {
+        return redirect()->route('login');
+    }
+
+    return view('docente.menu_docente');
+})->name('docente.menu_docente');
 
 // Panel administrador
 Route::prefix('admin')->name('admin.')->group(function () {

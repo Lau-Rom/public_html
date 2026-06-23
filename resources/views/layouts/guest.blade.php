@@ -22,11 +22,13 @@
             align-items: center !important;
             justify-content: center !important;
             padding: 24px !important;
+            box-sizing: border-box !important;
         }
 
         .login-box {
             width: 100% !important;
             max-width: 430px !important;
+            box-sizing: border-box !important;
         }
 
         .login-header {
@@ -53,6 +55,7 @@
             padding: 32px !important;
             box-shadow: 0 20px 45px rgba(0, 0, 0, .28) !important;
             border-top: 6px solid #B38E5D !important;
+            box-sizing: border-box !important;
         }
 
         .login-card label {
@@ -69,6 +72,13 @@
             padding: 12px 14px !important;
             background: #F9FAFB !important;
             box-sizing: border-box !important;
+            color: #111827 !important;
+            -webkit-text-fill-color: #111827 !important;
+        }
+
+        .login-card input::placeholder {
+            color: #6B7280 !important;
+            opacity: 1 !important;
         }
 
         .login-card button {
@@ -79,23 +89,25 @@
             padding: 13px 20px !important;
             font-weight: 700 !important;
             margin-top: 16px !important;
+            box-sizing: border-box !important;
         }
 
-        /* Forzar color del texto escrito */
+        @media (max-width: 640px) {
+            .login-page {
+                padding: 16px !important;
+            }
 
-        .login-card input,
-        .login-card input:focus,
-        .login-card input:active,
-        .login-card input:visited {
-            color: #111827 !important;
-            -webkit-text-fill-color: #111827 !important;
-        }
+            .login-box {
+                max-width: 100% !important;
+            }
 
-        /* Placeholder */
+            .login-card {
+                padding: 20px !important;
+            }
 
-        .login-card input::placeholder {
-            color: #6B7280 !important;
-            opacity: 1 !important;
+            .login-header h1 {
+                font-size: 24px !important;
+            }
         }
     </style>
 </head>

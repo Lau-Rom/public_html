@@ -4,12 +4,35 @@ use App\Livewire\Actions\Logout;
 use Livewire\Volt\Component;
 
 new class extends Component {
-    /**
-     * Log the current user out of the application.
-     */
+    public string $nombreUsuario = 'Usuario';
+    public string $correoUsuario = '';
+
+    public function mount(): void
+    {
+        if (auth()->check()) {
+            $this->nombreUsuario = auth()->user()->name;
+            $this->correoUsuario = auth()->user()->email;
+            return;
+        }
+
+        if (session('tipo_usuario') === 'semillero') {
+            $this->nombreUsuario = session('semillero_usuario', 'Semillero');
+            $this->correoUsuario = 'Semillero';
+            return;
+        }
+
+        if (session('tipo_usuario') === 'docente') {
+            $this->nombreUsuario = session('docente_usuario', 'Docente');
+            $this->correoUsuario = 'Docente';
+            return;
+        }
+    }
+
     public function logout(Logout $logout): void
     {
         $logout();
+
+        session()->forget(['semillero_id', 'semillero_usuario', 'docente_id', 'docente_usuario', 'tipo_usuario']);
 
         $this->redirect('/');
     }
@@ -34,7 +57,7 @@ new class extends Component {
                         <button
                             class="inline-flex items-center px-4 py-2 border border-[#d7d0c4] text-sm leading-4 font-semibold rounded-lg text-[#691c32] bg-[#f6f2ea] hover:bg-[#eee7dc] focus:outline-none transition">
 
-                            <div x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
+                            <div x-data="{{ json_encode(['name' => $nombreUsuario]) }}" x-text="name"
                                 x-on:profile-updated.window="name = $event.detail.name">
                             </div>
 
@@ -117,12 +140,12 @@ new class extends Component {
 
             <div class="px-4">
 
-                <div class="font-medium text-base text-[#691c32]" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
+                <div class="font-medium text-base text-[#691c32]" x-data="{{ json_encode(['name' => $nombreUsuario]) }}" x-text="name"
                     x-on:profile-updated.window="name = $event.detail.name">
                 </div>
 
                 <div class="font-medium text-sm text-gray-500">
-                    {{ auth()->user()->email }}
+                    {{ $correoUsuario }}
                 </div>
 
             </div>

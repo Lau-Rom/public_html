@@ -22,6 +22,8 @@ class Docente extends Model
         'tipo_contratacion_id',
         'tabulador_id',
         'horas_semana_id',
+        'usuario',
+        'contrasena',
     ];
 
     public function nacionalidad()
