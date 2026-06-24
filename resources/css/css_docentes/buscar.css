@@ -132,6 +132,99 @@
     padding: 28px;
     color: #777;
 }
+/* ===========================
+   DISEÑO PARA VISTA SHOW
+=========================== */
+.docente-show-container {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 35px;
+    background: #f4efe8;
+}
+
+.docente-show-container h1 {
+    max-width: 1100px;
+    margin: 0 auto 22px auto;
+    color: #611232;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.docente-show-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid #e7decf;
+    box-shadow: 0 12px 30px rgba(97, 18, 50, 0.08);
+}
+
+.docente-show-card p,
+.docente-show-card .dato {
+    background: #faf7f2;
+    border: 1px solid #eee4d8;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    color: #3d332e;
+    font-size: 14px;
+}
+
+.docente-show-card strong,
+.docente-show-card .label {
+    color: #611232;
+    font-weight: 800;
+}
+
+.docente-semilleros-box {
+    margin-top: 25px;
+}
+
+.docente-semilleros-box h2 {
+    color: #611232;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.semillero-card {
+    background: #ffffff;
+    border: 2px solid #e7decf;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+.semillero-card p {
+    background: #faf7f2;
+    border: 1px solid #eee4d8;
+    border-radius: 12px;
+    padding: 11px 13px;
+    margin-bottom: 9px;
+}
+
+.docente-show-actions {
+    max-width: 1100px;
+    margin: 22px auto 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-descargar {
+    background: #611232;
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-descargar:hover {
+    background: #7a183f;
+}
 
 /* ===========================
    RESPONSIVE

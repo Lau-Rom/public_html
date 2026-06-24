@@ -14,6 +14,7 @@ use App\Models\HorasSemana;
 use App\Models\Docente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class DocenteController extends Controller
@@ -160,6 +161,7 @@ class DocenteController extends Controller
             'apellido_materno' => $validated['apellido_materno'],
             'curp' => $validated['curp'],
             'fecha_nacimiento' => $validated['fecha_nacimiento'] ?? null,
+            'estatus' => 'Activo',
             'clave_trabajo' => $validated['clave_trabajo'],
             'telefono' => $validated['telefono'],
             'correo' => $validated['correo'],
@@ -174,6 +176,7 @@ class DocenteController extends Controller
             'tipo_contratacion_id' => $validated['tipo_contratacion_id'],
             'tabulador_id' => $validated['tabulador_id'],
             'horas_semana_id' => $validated['horas_semana_id'],
+
         ]);
 
         $docente->semilleros()->sync($validated['semilleros'] ?? []);
@@ -207,12 +210,13 @@ class DocenteController extends Controller
 
         $docentes = Docente::query()
             ->when($busqueda, function ($query, $busqueda) {
-                $query->where('curp', 'LIKE', "%{$busqueda}%")
-                    ->orWhere('correo', 'LIKE', "%{$busqueda}%")
-                    ->orWhere('usuario', 'LIKE', "%{$busqueda}%")
+                $query->where('id', $busqueda)
                     ->orWhere('nombre', 'LIKE', "%{$busqueda}%")
                     ->orWhere('apellido_paterno', 'LIKE', "%{$busqueda}%")
-                    ->orWhere('apellido_materno', 'LIKE', "%{$busqueda}%");
+                    ->orWhere('apellido_materno', 'LIKE', "%{$busqueda}%")
+                    ->orWhere('curp', 'LIKE', "%{$busqueda}%")
+                    ->orWhere('correo', 'LIKE', "%{$busqueda}%")
+                    ->orWhere('usuario', 'LIKE', "%{$busqueda}%");
             })
             ->orderBy('nombre', 'asc')
             ->get();
@@ -222,23 +226,68 @@ class DocenteController extends Controller
         return view('admin.docentes.buscar', compact('docentes', 'totalDocentes', 'busqueda'));
     }
 
-    public function show(string $id)
+    public function show(Docente $docente)
     {
-        //
+        $docente->load([
+            'nacionalidad',
+            'genero',
+            'actividad',
+            'especialidad',
+            'tipoContratacion',
+            'tabulador',
+            'horasSemana',
+            'semilleros',
+        ]);
+
+        return view('admin.docentes.show', compact('docente'));
+    }
+    public function pdf(Docente $docente)
+    {
+        $docente->load([
+            'nacionalidad',
+            'genero',
+            'actividad',
+            'especialidad',
+            'tipoContratacion',
+            'tabulador',
+            'horasSemana',
+            'semilleros',
+        ]);
+
+        $pdf = Pdf::loadView('admin.docentes.pdf', compact('docente'));
+
+        return $pdf->download('docente_' . $docente->id . '.pdf');
     }
 
-    public function edit(string $id)
+    public function edit(Docente $docente)
     {
-        return view('admin.docentes.edit');
+        return view('admin.docentes.edit', compact('docente'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Docente $docente)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido_paterno' => 'required|string|max:255',
+            'apellido_materno' => 'nullable|string|max:255',
+            'curp' => 'required|string|max:18',
+            'correo' => 'required|email',
+            'usuario' => 'required|string|max:255',
+        ]);
+
+        $docente->update($request->all());
+
+        return redirect()
+            ->route('admin.docentes.buscar')
+            ->with('success', 'Docente actualizado correctamente.');
     }
 
-    public function destroy(string $id)
+    public function destroy(Docente $docente)
     {
-        //
+        $docente->delete();
+
+        return redirect()
+            ->route('admin.docentes.buscar')
+            ->with('success', 'Docente eliminado correctamente.');
     }
 }

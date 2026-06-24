@@ -12,6 +12,7 @@ class Docente extends Model
         'apellido_materno',
         'curp',
         'fecha_nacimiento',
+        'estatus',
         'clave_trabajo',
         'nacionalidad_id',
         'genero_id',
@@ -46,7 +47,6 @@ class Docente extends Model
         return $this->belongsTo(Especialidad::class);
     }
 
-
     public function semilleros()
     {
         return $this->belongsToMany(Semillero::class, 'docente_semillero');
@@ -54,7 +54,7 @@ class Docente extends Model
 
     public function tipoContratacion()
     {
-        return $this->belongsTo(TipoContratacion::class);
+        return $this->belongsTo(TipoContratacion::class, 'tipo_contratacion_id');
     }
 
     public function tabulador()
@@ -64,6 +64,6 @@ class Docente extends Model
 
     public function horasSemana()
     {
-        return $this->belongsTo(HorasSemana::class);
+        return $this->belongsTo(HorasSemana::class, 'horas_semana_id');
     }
 }

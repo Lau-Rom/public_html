@@ -38,6 +38,7 @@
                             <th>CURP</th>
                             <th>Correo</th>
                             <th>Usuario</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
 
@@ -50,10 +51,31 @@
                                 <td>{{ $docente->curp }}</td>
                                 <td>{{ $docente->correo }}</td>
                                 <td>{{ $docente->usuario }}</td>
+
+                                <td class="docentes-actions">
+                                    <a href="{{ route('admin.docentes.show', $docente->id) }}" class="btn-ver">
+                                        Ver
+                                    </a>
+
+                                    <a href="{{ route('admin.docentes.edit', $docente->id) }}" class="btn-editar">
+                                        Editar
+                                    </a>
+
+                                    <form action="{{ route('admin.docentes.destroy', $docente->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn-eliminar"
+                                            onclick="return confirm('¿Seguro que deseas eliminar este docente?')">
+                                            Eliminar
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="docentes-empty">
+                                <td colspan="7" class="docentes-empty">
                                     No se encontraron docentes registrados.
                                 </td>
                             </tr>

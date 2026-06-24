@@ -40,11 +40,18 @@ Route::get('/docente/menu_docente', function () {
 // Panel administrador
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    Route::get('docentes/buscar', [DocenteController::class, 'buscar'])
+    // Buscar docentes
+    Route::get('/docentes/buscar', [DocenteController::class, 'buscar'])
         ->name('docentes.buscar');
 
+    // Descargar PDF
+    Route::get('/docentes/{docente}/pdf', [DocenteController::class, 'pdf'])
+        ->name('docentes.pdf');
+
+    // CRUD completo
     Route::resource('docentes', DocenteController::class);
 });
+
 
 Route::prefix('admin/diplomados')->name('admin.diplomados.')->group(function () {
     Route::get('/', [DiplomadoController::class, 'index'])->name('index');

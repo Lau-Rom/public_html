@@ -137,6 +137,12 @@
                             <div class="docente-form-grid">
 
                                 <div class="docente-form-group">
+                                    <label for="estatus">Estatus</label>
+                                    <input type="text" id="estatus" name="estatus" value="ACTIVO"
+                                        class="form-control" readonly>
+                                </div>
+
+                                <div class="docente-form-group">
                                     <label>Clave de trabajo</label>
                                     <input type="text" name="clave_trabajo" value="{{ old('clave_trabajo') }}">
                                     @error('clave_trabajo')
