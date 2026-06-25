@@ -3,14 +3,20 @@
         <div class="buscar-docentes-content">
 
             <div class="docentes-header">
-                <div>
+                <div class="docentes-header-text">
                     <h1>Buscar docente</h1>
                     <p>Consulta docentes registrados por CURP, correo, usuario o nombre.</p>
                 </div>
 
-                <span class="docentes-total">
-                    Total de docentes: {{ $totalDocentes }}
-                </span>
+                <div class="docentes-header-actions">
+                    <span class="docentes-total">
+                        Total: {{ $totalDocentes }} docentes
+                    </span>
+
+                    <a href="{{ route('admin.docentes.index') }}" class="btn-atras">
+                        Salir
+                    </a>
+                </div>
             </div>
 
             <form method="GET" action="{{ route('admin.docentes.buscar') }}" class="docentes-search-form">

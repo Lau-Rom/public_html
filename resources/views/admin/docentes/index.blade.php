@@ -25,19 +25,7 @@
                 <a href="{{ route('admin.docentes.buscar') }}" class="docentes-menu-card">
                     <span>🔍</span>
                     <h3>Buscar docente</h3>
-                    <p>Consultar docentes registrados.</p>
-                </a>
-
-                <a href="#" class="docentes-menu-card">
-                    <span>✏️</span>
-                    <h3>Modificar docente</h3>
-                    <p>Actualizar información de un docente.</p>
-                </a>
-
-                <a href="#" class="docentes-menu-card">
-                    <span>🗑️</span>
-                    <h3>Eliminar docente</h3>
-                    <p>Dar de baja o eliminar un docente.</p>
+                    <p>Consultar, editar, eliminar y descargar la información de los docentes registrados.</p>
                 </a>
 
                 <a href="#" class="docentes-menu-card">

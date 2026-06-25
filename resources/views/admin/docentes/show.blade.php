@@ -27,14 +27,17 @@
             <p><strong>Correo:</strong> {{ $docente->correo ?? 'No registrado' }}</p>
             <p><strong>Usuario:</strong> {{ $docente->usuario ?? 'No registrado' }}</p>
 
-            <p><strong>Contraseña:</strong> ********</p>
+
 
             <p><strong>Tipo de contratación:</strong> {{ $docente->tipoContratacion->nombre ?? 'No registrado' }}</p>
             <p><strong>Tabulador:</strong> {{ $docente->tabulador->nombre ?? 'No registrado' }}</p>
             <p><strong>Horas por semana:</strong> {{ $docente->horasSemana->nombre ?? 'No registrado' }}</p>
 
+
             <div class="docente-semilleros-box">
+
                 <h2>Semillero(s) asignado(s)</h2>
+
 
                 @if ($docente->semilleros->count())
                     @foreach ($docente->semilleros as $semillero)

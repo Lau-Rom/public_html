@@ -15,6 +15,7 @@ use App\Models\Docente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Validation\Rule;
 
 
 class DocenteController extends Controller
@@ -261,24 +262,106 @@ class DocenteController extends Controller
 
     public function edit(Docente $docente)
     {
-        return view('admin.docentes.edit', compact('docente'));
+        $nacionalidades = Nacionalidad::all();
+        $generos = Genero::all();
+        $actividades = Actividad::all();
+        $especialidades = Especialidad::all();
+        $tipoContrataciones = TipoContratacion::all();
+        $tabuladores = Tabulador::all();
+        $horasSemana = HorasSemana::all();
+        $semilleros = Semillero::all();
+
+
+        $docente->load('semilleros');
+
+        return view('admin.docentes.edit', compact(
+            'docente',
+            'nacionalidades',
+            'generos',
+            'actividades',
+            'especialidades',
+            'tipoContrataciones',
+            'tabuladores',
+            'horasSemana',
+            'semilleros'
+        ));
     }
+
+
 
     public function update(Request $request, Docente $docente)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'apellido_paterno' => 'required|string|max:255',
-            'apellido_materno' => 'nullable|string|max:255',
-            'curp' => 'required|string|max:18',
-            'correo' => 'required|email',
-            'usuario' => 'required|string|max:255',
+        $rules = [
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellido_paterno' => ['required', 'string', 'max:255'],
+            'apellido_materno' => ['nullable', 'string', 'max:255'],
+            'nacionalidad_id' => ['required', 'exists:nacionalidades,id'],
+            'curp' => ['nullable', 'string', 'max:18'],
+            'fecha_nacimiento' => ['nullable', 'date'],
+            'telefono' => ['required', 'string', 'max:10'],
+            'correo' => [
+                'required',
+                'email',
+                Rule::unique('docentes', 'correo')->ignore($docente->id),
+            ],
+            'genero_id' => ['required', 'exists:generos,id'],
+            'estatus' => ['required', Rule::in(['ACTIVO', 'INACTIVO'])],
+            'clave_trabajo' => ['nullable', 'string', 'max:255'],
+            'actividad_id' => ['required', 'exists:actividades,id'],
+            'especialidad_id' => ['required', 'exists:especialidades,id'],
+            'tipo_contratacion_id' => ['required', 'exists:tipo_contrataciones,id'],
+            'tabulador_id' => ['required', 'exists:tabuladores,id'],
+            'horas_semana_id' => ['required', 'exists:horas_semana,id'],
+            'semilleros' => ['nullable', 'array'],
+            'semilleros.*' => ['exists:semilleros,id'],
+        ];
+
+        if ($request->has('editar_cuenta')) {
+            $rules['usuario'] = [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('users', 'name')->ignore($docente->user_id),
+            ];
+
+            $rules['contrasena'] = ['nullable', 'confirmed', 'min:8'];
+        }
+
+        $data = $request->validate($rules);
+
+        $docente->update([
+            'nombre' => $data['nombre'],
+            'apellido_paterno' => $data['apellido_paterno'],
+            'apellido_materno' => $data['apellido_materno'] ?? null,
+            'nacionalidad_id' => $data['nacionalidad_id'],
+            'curp' => $data['curp'] ?? null,
+            'fecha_nacimiento' => $data['fecha_nacimiento'] ?? null,
+            'telefono' => $data['telefono'],
+            'correo' => $data['correo'],
+            'genero_id' => $data['genero_id'],
+            'estatus' => $data['estatus'],
+            'clave_trabajo' => $data['clave_trabajo'] ?? null,
+            'actividad_id' => $data['actividad_id'],
+            'especialidad_id' => $data['especialidad_id'],
+            'tipo_contratacion_id' => $data['tipo_contratacion_id'],
+            'tabulador_id' => $data['tabulador_id'],
+            'horas_semana_id' => $data['horas_semana_id'],
         ]);
 
-        $docente->update($request->all());
+        $docente->semilleros()->sync($request->semilleros ?? []);
+
+        if ($request->has('editar_cuenta')) {
+            $docente->usuario = $data['usuario'];
+
+            if (!empty($data['contrasena'])) {
+                $docente->contrasena = Hash::make($data['contrasena']);
+            }
+
+            $docente->save();
+        }
 
         return redirect()
-            ->route('admin.docentes.buscar')
+            ->route('admin.docentes.index')
             ->with('success', 'Docente actualizado correctamente.');
     }
 
