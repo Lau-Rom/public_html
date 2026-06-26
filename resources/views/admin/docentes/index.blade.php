@@ -35,6 +35,12 @@
                 </a>
 
             </div>
+            <!-- Botón regresar -->
+            <div class="docentes-footer">
+                <a href="{{ route('dashboard') }}" class="btn-regresar">
+                    ← Regresar al menú principal
+                </a>
+            </div>
 
         </div>
 

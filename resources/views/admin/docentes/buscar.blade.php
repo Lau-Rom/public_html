@@ -17,6 +17,11 @@
                         Salir
                     </a>
                 </div>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div>
 
             <form method="GET" action="{{ route('admin.docentes.buscar') }}" class="docentes-search-form">

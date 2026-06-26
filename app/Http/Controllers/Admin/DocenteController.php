@@ -310,8 +310,8 @@ class DocenteController extends Controller
             'actividad_id' => ['required', 'exists:actividades,id'],
             'especialidad_id' => ['required', 'exists:especialidades,id'],
             'tipo_contratacion_id' => ['required', 'exists:tipo_contrataciones,id'],
-            'tabulador_id' => ['required', 'exists:tabuladores,id'],
-            'horas_semana_id' => ['required', 'exists:horas_semana,id'],
+            'tabulador_id' => ['required', 'exists:tabulador,id'],
+            'horas_semana_id' => ['required', 'exists:horas_semanas,id'],
             'semilleros' => ['nullable', 'array'],
             'semilleros.*' => ['exists:semilleros,id'],
         ];
@@ -329,6 +329,13 @@ class DocenteController extends Controller
 
         $data = $request->validate($rules);
 
+        $data['nombre'] = $this->formatoNombre($data['nombre']);
+        $data['apellido_paterno'] = $this->formatoNombre($data['apellido_paterno']);
+
+        $data['apellido_materno'] = !empty($data['apellido_materno'])
+            ? $this->formatoNombre($data['apellido_materno'])
+            : null;
+        $data['estatus'] = ucfirst(strtolower($data['estatus']));
         $docente->update([
             'nombre' => $data['nombre'],
             'apellido_paterno' => $data['apellido_paterno'],
@@ -361,7 +368,7 @@ class DocenteController extends Controller
         }
 
         return redirect()
-            ->route('admin.docentes.index')
+            ->route('admin.docentes.buscar')
             ->with('success', 'Docente actualizado correctamente.');
     }
 

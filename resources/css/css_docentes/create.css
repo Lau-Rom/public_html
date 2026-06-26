@@ -173,6 +173,27 @@
     padding-bottom: 12px;
     border-bottom: 2px solid #ddc9a3;
 }
+
+/* ===========================
+   Css para la parte de cuenta deshabilitado en el edit
+=========================== */
+
+.cuenta-deshabilitada {
+    opacity: .6;
+}
+
+.cuenta-deshabilitada input {
+    background-color: #e5e7eb;
+    color: #6b7280;
+    cursor: not-allowed;
+}
+
+.cuenta-deshabilitada input::placeholder {
+    color: #9ca3af;
+}
+.cuenta-deshabilitada label {
+    color: #6b7280;
+}
 /* ===========================
    alertas para el create de docentes
 =========================== */

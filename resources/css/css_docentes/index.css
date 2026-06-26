@@ -80,3 +80,29 @@
     font-size: 15px;
     line-height: 1.5;
 }
+
+/* ===========================
+   boton regresar de mi index
+=========================== */
+
+.docentes-footer{
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.btn-regresar{
+    display: inline-block;
+    padding: 12px 28px;
+    background: #6b7280;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.btn-regresar:hover{
+    background: #4b5563;
+    transform: translateY(-2px);
+}

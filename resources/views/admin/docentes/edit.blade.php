@@ -64,14 +64,18 @@
 
                             <div class="docente-form-group">
                                 <label>Nacionalidad</label>
+
                                 <select name="nacionalidad_id" id="nacionalidad_id" required>
                                     <option value="">Selecciona una opción</option>
+
                                     @foreach ($nacionalidades as $nacionalidad)
-                                        <option value="{{ $nacionalidad->id }}" @selected(old('nacionalidad_id', $docente->nacionalidad_id) == $nacionalidad->id)>
+                                        <option value="{{ $nacionalidad->id }}"
+                                            data-nombre="{{ $nacionalidad->nombre }}" @selected(old('nacionalidad_id', $docente->nacionalidad_id) == $nacionalidad->id)>
                                             {{ $nacionalidad->nombre }}
                                         </option>
                                     @endforeach
                                 </select>
+
                                 @error('nacionalidad_id')
                                     <small class="text-error">{{ $message }}</small>
                                 @enderror
@@ -117,14 +121,18 @@
 
                             <div class="docente-form-group">
                                 <label>Género</label>
+
                                 <select name="genero_id" id="genero_id" required>
                                     <option value="">Selecciona una opción</option>
+
                                     @foreach ($generos as $genero)
-                                        <option value="{{ $genero->id }}" @selected(old('genero_id', $docente->genero_id) == $genero->id)>
+                                        <option value="{{ $genero->id }}" data-nombre="{{ $genero->nombre }}"
+                                            @selected(old('genero_id', $docente->genero_id) == $genero->id)>
                                             {{ $genero->nombre }}
                                         </option>
                                     @endforeach
                                 </select>
+
                                 @error('genero_id')
                                     <small class="text-error">{{ $message }}</small>
                                 @enderror
@@ -271,7 +279,8 @@
                                 <span>Actualizar usuario o contraseña</span>
                             </label>
 
-                            <div class="docente-form-grid">
+
+                            <div class="docente-form-grid" id="cuentaForm">
 
                                 <div class="docente-form-group">
                                     <label>Usuario de acceso</label>

@@ -9,7 +9,7 @@
             <a href="{{ route('admin.docentes.index') }}">Crear docentes</a>
             <a href="#">Convocatorias</a>
             <a href="#">Estadísticas</a>
-            <a href="#">Diplomados</a>
+            <a href="{{ route('admin.diplomados.index') }}">Diplomados</a>
         </ul>
 
     </div>

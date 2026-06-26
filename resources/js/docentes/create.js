@@ -15,18 +15,24 @@
         'apellido_materno'
     ];
 
-    camposSoloLetras.forEach(name => {
-        const input = document.querySelector(`[name="${name}"]`);
+   camposSoloLetras.forEach(name => {
+    const input = document.querySelector(`[name="${name}"]`);
 
-        if (input) {
-            input.addEventListener('input', function() {
-                this.value = this.value
-                    .replace(/[^a-zA-ZÁÉÍÓÚáéíóúÑñ\s]/g, '')
-                    .replace(/\s+/g, ' ')
-                    .toUpperCase();
-            });
-        }
-    });
+    if (input) {
+
+        input.value = input.value
+            .replace(/[^a-zA-ZÁÉÍÓÚáéíóúÑñ\s]/g, '')
+            .replace(/\s+/g, ' ')
+            .toUpperCase();
+
+        input.addEventListener('input', function() {
+            this.value = this.value
+                .replace(/[^a-zA-ZÁÉÍÓÚáéíóúÑñ\s]/g, '')
+                .replace(/\s+/g, ' ')
+                .toUpperCase();
+        });
+    }
+});
 
     if (telefono) {
         telefono.addEventListener('input', function() {
@@ -49,11 +55,13 @@
         });
     }
 
-    if (nacionalidad) {
-        nacionalidad.addEventListener('change', function() {
-            validarNacionalidad(true);
-        });
-    }
+   if (nacionalidad) {
+    nacionalidad.addEventListener('change', function() {
+        validarNacionalidad(true);
+    });
+
+    validarNacionalidad(false);
+}
 
     if (curp) {
         curp.addEventListener('input', function() {
