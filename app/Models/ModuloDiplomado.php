@@ -20,6 +20,6 @@ class ModuloDiplomado extends Model
 
     public function materiales()
     {
-        return $this->hasMany(MaterialDiplomado::class);
+        return $this->hasMany(MaterialDiplomado::class, 'modulo_diplomado_id');
     }
 }

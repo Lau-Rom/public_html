@@ -1,31 +1,112 @@
-<h1>Panel de Diplomados</h1>
+<x-app-layout>
 
-@if (session('success'))
-    <p style="color: green;">{{ session('success') }}</p>
-@endif
 
-<a href="{{ route('admin.diplomados.create') }}">
-    Crear diplomado
-</a>
 
-<hr>
+    <div class="diplomados-container">
 
-@foreach ($diplomados as $diplomado)
-    <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px;">
-        <h3>{{ $diplomado->nombre }}</h3>
+        <div class="header-diplomados">
 
-        <p>{{ $diplomado->descripcion }}</p>
+            <div>
+                <h1>Panel de Diplomados</h1>
+                <p>Administra todos los diplomados del sistema.</p>
+            </div>
 
-        <p>
-            <strong>Duración:</strong> {{ $diplomado->duracion }}
-        </p>
+            <a href="{{ route('admin.diplomados.create') }}" class="btn-crear">
+                + Crear Diplomado
+            </a>
 
-        <p>
-            <strong>Estado:</strong> {{ $diplomado->estado }}
-        </p>
+        </div>
 
-        <a href="{{ route('admin.diplomados.show', $diplomado) }}">
-            Ver diplomado
-        </a>
+        @if (session('success'))
+            <div class="alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($diplomados->count())
+            <div class="diplomados-grid">
+
+                @foreach ($diplomados as $diplomado)
+                    <div class="card-diplomado">
+
+                        <div class="card-header">
+
+                            <h2>{{ $diplomado->nombre }}</h2>
+
+                            <span class="estado {{ strtolower($diplomado->estado) }}">
+                                {{ ucfirst($diplomado->estado) }}
+                            </span>
+
+                        </div>
+
+                        <p class="descripcion">
+                            {{ $diplomado->descripcion }}
+                        </p>
+
+                        <div class="info-diplomado">
+
+                            <div class="info-item">
+                                <span>⏱</span>
+                                <strong>Duración:</strong>
+                                {{ $diplomado->duracion }}
+                            </div>
+
+                            <div class="info-item">
+                                <span>📚</span>
+                                <strong>Módulos:</strong>
+                                Próximamente
+                            </div>
+
+                            <div class="info-item">
+                                <span>👨‍🏫</span>
+                                <strong>Docentes:</strong>
+                                Próximamente
+                            </div>
+
+                        </div>
+
+                        <div class="acciones-diplomado">
+
+                            <a href="{{ route('admin.diplomados.show', $diplomado) }}" class="btn btn-entrar">
+                                Entrar
+                            </a>
+
+                            {{-- Cuando exista la ruta descomenta --}}
+                            {{--
+                        <a href="{{ route('admin.diplomados.edit',$diplomado) }}" class="btn btn-editar">
+                            Editar
+                        </a>
+                        --}}
+
+                            {{--
+                        <a href="{{ route('admin.diplomados.docentes',$diplomado) }}" class="btn btn-docente">
+                            Asignar docente
+                        </a>
+                        --}}
+
+                        </div>
+
+                    </div>
+                @endforeach
+
+            </div>
+        @else
+            <div class="sin-diplomados">
+
+                <h2>No hay diplomados registrados</h2>
+
+                <p>
+                    Comienza creando el primer diplomado para asignarlo posteriormente
+                    a los docentes.
+                </p>
+
+                <a href="{{ route('admin.diplomados.create') }}" class="btn-crear">
+                    Crear primer diplomado
+                </a>
+
+            </div>
+        @endif
+
     </div>
-@endforeach
+
+</x-app-layout>

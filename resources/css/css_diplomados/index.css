@@ -1,0 +1,240 @@
+.diplomados-container{
+    max-width:1300px;
+    margin:auto;
+    padding:40px;
+    background:#ECE8E1;
+    min-height:100vh;
+}
+
+/*==========================
+HEADER
+===========================*/
+
+.header-diplomados{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.header-diplomados h1{
+    font-size:35px;
+    color:#235b4e;
+    margin-bottom:8px;
+    font-weight:800;
+}
+
+.header-diplomados p{
+    color:#6b7280;
+}
+
+/*==========================
+BOTONES
+===========================*/
+
+.btn-crear{
+    background:#235b4e;
+    color:white;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:12px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.btn-crear:hover{
+    background:#611232;
+    transform:translateY(-2px);
+}
+
+.btn{
+    text-decoration:none;
+    color:white;
+    padding:10px 16px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-entrar{
+    background:#235b4e;
+}
+
+.btn-entrar:hover{
+    background:#611232;
+}
+
+.btn-editar{
+    background:#b38e5d;
+}
+
+.btn-editar:hover{
+    background:#9f7a49;
+}
+
+.btn-docente{
+    background:#611232;
+}
+
+.btn-docente:hover{
+    background:#4b0d27;
+}
+
+/*==========================
+ALERTA
+===========================*/
+
+.alert-success{
+    background:#ecfdf5;
+    color:#166534;
+    border:1px solid #bbf7d0;
+    border-left:5px solid #22c55e;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:30px;
+}
+
+/*==========================
+GRID
+===========================*/
+
+.diplomados-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
+    gap:25px;
+}
+
+/*==========================
+CARD
+===========================*/
+
+.card-diplomado{
+    background:#ffffff;
+    border-radius:22px;
+    padding:25px;
+    border:1px solid #e7decf;
+    border-top:8px solid #611232;
+    box-shadow:0 12px 30px rgba(97,18,50,.10);
+    transition:.3s;
+}
+
+.card-diplomado:hover{
+    transform:translateY(-8px);
+    box-shadow:0 16px 35px rgba(97,18,50,.16);
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+    gap:15px;
+}
+
+.card-header h2{
+    font-size:22px;
+    color:#235b4e;
+    margin:0;
+    font-weight:800;
+}
+
+.descripcion{
+    color:#6b7280;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+/*==========================
+ESTADO
+===========================*/
+
+.estado{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:800;
+}
+
+.estado.activo{
+    background:#ecfdf5;
+    color:#166534;
+    border:1px solid #bbf7d0;
+}
+
+.estado.inactivo{
+    background:#fef2f2;
+    color:#991b1b;
+    border:1px solid #fecaca;
+}
+
+.estado.borrador{
+    background:#f8f5ef;
+    color:#611232;
+    border:1px solid #ddc9a3;
+}
+
+/*==========================
+INFORMACIÓN
+===========================*/
+
+.info-diplomado{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:25px;
+    background:#f8f5ef;
+    border:1px solid #e7decf;
+    border-radius:16px;
+    padding:16px;
+}
+
+.info-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#374151;
+    font-size:15px;
+    font-weight:600;
+}
+
+/*==========================
+ACCIONES
+===========================*/
+
+.acciones-diplomado{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+/*==========================
+SIN REGISTROS
+===========================*/
+
+.sin-diplomados{
+    background:#ffffff;
+    border-radius:22px;
+    padding:50px;
+    text-align:center;
+    border:1px solid #e7decf;
+    border-top:8px solid #611232;
+    box-shadow:0 12px 30px rgba(97,18,50,.10);
+}
+
+.sin-diplomados h2{
+    margin-bottom:10px;
+    color:#235b4e;
+    font-weight:800;
+}
+
+.sin-diplomados p{
+    color:#6b7280;
+    margin-bottom:25px;
+}

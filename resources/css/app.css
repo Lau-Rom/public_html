@@ -5,6 +5,9 @@
 @import './css_docentes/create.css';
 @import './css_docentes/buscar.css';
 
+@import './css_diplomados/index.css';
+@import './css_diplomados/create.css';
+@import './css_diplomados/show.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

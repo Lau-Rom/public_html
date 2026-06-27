@@ -1,125 +1,162 @@
-<h1>{{ $diplomado->nombre }}</h1>
+<x-app-layout>
 
-@if (session('success'))
-    <p style="color: green;">{{ session('success') }}</p>
-@endif
+    <div class="panel-diplomado-container">
 
-<p>{{ $diplomado->descripcion }}</p>
+        <a href="{{ route('admin.diplomados.index') }}" class="btn-volver">
+            ← Volver al panel
+        </a>
 
-<p>
-    <strong>Duración:</strong> {{ $diplomado->duracion }}
-</p>
-
-<p>
-    <strong>Estado:</strong> {{ $diplomado->estado }}
-</p>
-
-@if ($diplomado->imagen)
-    <img src="{{ asset('storage/' . $diplomado->imagen) }}" width="250">
-@endif
-
-<hr>
-
-<h2>Agregar módulo</h2>
-
-<form action="{{ route('admin.diplomados.modulos.store', $diplomado) }}" method="POST">
-    @csrf
-
-    <label>Título del módulo</label>
-    <br>
-    <input type="text" name="titulo" required>
-    <br><br>
-
-    <label>Descripción</label>
-    <br>
-    <textarea name="descripcion"></textarea>
-    <br><br>
-
-    <label>Orden</label>
-    <br>
-    <input type="number" name="orden" value="1">
-    <br><br>
-
-    <button type="submit">Guardar módulo</button>
-</form>
-
-<hr>
-
-<h2>Módulos del diplomado</h2>
-
-@foreach ($diplomado->modulos as $modulo)
-    <div style="border: 1px solid #999; padding: 15px; margin-bottom: 20px;">
-        <h3>Módulo {{ $modulo->orden }}: {{ $modulo->titulo }}</h3>
-
-        <p>{{ $modulo->descripcion }}</p>
-
-        <h4>Subir material</h4>
-
-        <form action="{{ route('admin.diplomados.materiales.store', $modulo) }}" method="POST"
-            enctype="multipart/form-data">
-            @csrf
-
-            <label>Título del material</label>
-            <br>
-            <input type="text" name="titulo" required>
-            <br><br>
-
-            <label>Descripción</label>
-            <br>
-            <textarea name="descripcion"></textarea>
-            <br><br>
-
-            <label>Tipo</label>
-            <br>
-            <select name="tipo" required>
-                <option value="pdf">PDF</option>
-                <option value="infografia">Infografía</option>
-                <option value="video">Video</option>
-                <option value="documento">Documento</option>
-                <option value="link">Link</option>
-            </select>
-            <br><br>
-
-            <label>Archivo</label>
-            <br>
-            <input type="file" name="archivo">
-            <br><br>
-
-            <label>URL de video o enlace</label>
-            <br>
-            <input type="url" name="url">
-            <br><br>
-
-            <button type="submit">Guardar material</button>
-        </form>
-
-        <h4>Materiales cargados</h4>
-
-        @foreach ($modulo->materiales as $material)
-            <div style="margin-left: 20px;">
-                <strong>{{ $material->titulo }}</strong>
-                <br>
-                Tipo: {{ $material->tipo }}
-
-                @if ($material->archivo)
-                    <br>
-                    <a href="{{ asset('storage/' . $material->archivo) }}" target="_blank">
-                        Ver archivo
-                    </a>
-                @endif
-
-                @if ($material->url)
-                    <br>
-                    <a href="{{ $material->url }}" target="_blank">
-                        Ver enlace
-                    </a>
-                @endif
+        @if (session('success'))
+            <div class="alert-success">
+                {{ session('success') }}
             </div>
-            <br>
-        @endforeach
-    </div>
-@endforeach
+        @endif
 
-<a href="{{ route('admin.diplomados.index') }}">
-    Volver al panel
-</a>
+        <div class="hero-diplomado">
+
+            <div class="hero-info">
+
+                <span class="badge-estado {{ strtolower($diplomado->estado) }}">
+                    {{ ucfirst($diplomado->estado) }}
+                </span>
+
+                <h1>{{ $diplomado->nombre }}</h1>
+
+                <p>
+                    {{ $diplomado->descripcion }}
+                </p>
+
+                <div class="datos-diplomado">
+
+                    <div>
+                        <strong>Duración</strong>
+                        <span>{{ $diplomado->duracion ?? 'No definida' }}</span>
+                    </div>
+
+                    <div>
+                        <strong>Fecha inicio</strong>
+                        <span>{{ $diplomado->fecha_inicio ?? 'No definida' }}</span>
+                    </div>
+
+                    <div>
+                        <strong>Fecha fin</strong>
+                        <span>{{ $diplomado->fecha_fin ?? 'No definida' }}</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hero-imagen">
+
+                @if ($diplomado->imagen)
+                    <img src="{{ asset('storage/' . $diplomado->imagen) }}" alt="Imagen del diplomado">
+                @else
+                    <div class="sin-imagen">
+                        📚
+                        <span>Sin imagen de portada</span>
+                    </div>
+                @endif
+
+            </div>
+
+        </div>
+
+
+        <div class="contenido-diplomado">
+
+            <div class="form-modulo-card">
+
+                <h2>Agregar módulo</h2>
+
+                <p>
+                    Crea los módulos que formarán parte del diplomado.
+                </p>
+
+                <form action="{{ route('admin.diplomados.modulos.store', $diplomado) }}" method="POST">
+                    @csrf
+
+                    <div class="campo">
+                        <label>Título del módulo</label>
+                        <input type="text" name="titulo" value="{{ old('titulo') }}" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Descripción</label>
+                        <textarea name="descripcion" rows="4">{{ old('descripcion') }}</textarea>
+                    </div>
+
+                    <div class="campo">
+                        <label>Orden</label>
+                        <input type="number" name="orden"
+                            value="{{ old('orden', $diplomado->modulos->count() + 1) }}">
+                    </div>
+
+                    <button type="submit" class="btn-guardar-modulo">
+                        Guardar módulo
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="modulos-section">
+
+                <div class="section-header">
+                    <h2>Módulos del diplomado</h2>
+                    <p>Administra el contenido por módulo.</p>
+                </div>
+
+                @if ($diplomado->modulos->count())
+
+                    <div class="modulos-lista">
+
+                        @foreach ($diplomado->modulos as $modulo)
+                            <div class="modulo-card">
+
+                                <div class="modulo-numero">
+                                    {{ $modulo->orden }}
+                                </div>
+
+                                <div class="modulo-info">
+
+                                    <h3>{{ $modulo->titulo }}</h3>
+
+                                    <p>
+                                        {{ $modulo->descripcion ?? 'Sin descripción.' }}
+                                    </p>
+
+                                    <div class="modulo-meta">
+                                        <span>📄 {{ $modulo->materiales->count() }} materiales</span>
+                                    </div>
+
+                                </div>
+
+                                <div class="modulo-acciones">
+
+                                    <a href="{{ route('admin.diplomados.modulos.show', $modulo) }}"
+                                        class="btn-entrar-modulo">
+                                        Entrar
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        @endforeach
+
+                    </div>
+                @else
+                    <div class="sin-modulos">
+                        <h3>No hay módulos registrados</h3>
+                        <p>Agrega el primer módulo para comenzar a construir el diplomado.</p>
+                    </div>
+
+                @endif
+
+            </div>
+
+        </div>
+
+    </div>
+
+</x-app-layout>
