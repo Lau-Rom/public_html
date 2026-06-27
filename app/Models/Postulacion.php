@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Postulacion extends Model
+{
+    protected $table = 'postulaciones';
+
+    public $timestamps = false;
+
+    protected $guarded = [];
+}

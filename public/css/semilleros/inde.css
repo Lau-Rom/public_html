@@ -1,0 +1,135 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #edc8adaf;
+}
+
+
+h1 {
+  text-align: center;
+  color: #4b0320; 
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  padding: 0 1rem;
+  border-radius: 1rem;
+  width: fit-content;
+}
+
+.contenedor-login {
+  display: flex;
+  flex: 1; 
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Lado izquierdo con la imagen */
+.lado-izquierdo {
+  flex: 6; 
+  background: url("../img/index.png") no-repeat center center/cover;
+  margin-bottom: 1rem;
+}
+
+/* Lado derecho con el formulario */
+.lado-derecho {
+  flex: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ab8469af; 
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
+
+.caja-login {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  border-top: 6px solid #611232; /* acento */
+}
+
+.caja-login h2 {
+  color: #611232;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+
+.caja-login input[type="text"],
+.caja-login input[type="password"] {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.6rem 0;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.caja-login input[type="text"]:focus,
+.caja-login input[type="password"]:focus {
+  border-color: #DF724D; 
+  box-shadow: 0 0 8px rgba(223,114,77,0.3);
+}
+
+/* Botón */
+.caja-login button {
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 1rem;
+  background: #611232; 
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.caja-login button:hover {
+  background: #2A1B16; 
+}
+
+.caja-login a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #DF724D;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.caja-login a:hover {
+  color: #611232;
+}
+
+
+.mensaje-error {
+  color: #a50000;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+}

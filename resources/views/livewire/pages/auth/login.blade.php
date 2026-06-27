@@ -58,7 +58,7 @@ new #[Layout('layouts.guest')] class extends Component {
             Session::put('semillero_usuario', $semillero->usuario);
             Session::put('tipo_usuario', 'semillero');
 
-            $this->redirect(route('semillero.ejemplo_panel', absolute: false), navigate: true);
+            $this->redirect(route('semillero.dashboard', absolute: false), navigate: true);
 
             return;
         }
