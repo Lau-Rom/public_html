@@ -9,10 +9,10 @@ class MaterialDiplomado extends Model
     protected $fillable = [
         'modulo_diplomado_id',
         'titulo',
-        'descripcion',
         'tipo',
         'archivo',
         'url',
+        'descripcion',
     ];
 
     public function modulo()

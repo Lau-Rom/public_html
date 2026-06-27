@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DocenteController;
 use App\Http\Controllers\Admin\DiplomadoController;
-use App\Http\Controllers\Admin\ModuloDiplomadoController;
-use App\Http\Controllers\Admin\MaterialDiplomadoController;
+use App\Http\Controllers\Admin\ModuloController;
+
 
 // Redirigir al login al entrar al sistema
 Route::redirect('/', '/login');
@@ -54,16 +54,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
 Route::prefix('admin/diplomados')->name('admin.diplomados.')->group(function () {
+
     Route::get('/', [DiplomadoController::class, 'index'])->name('index');
     Route::get('/crear', [DiplomadoController::class, 'create'])->name('create');
     Route::post('/guardar', [DiplomadoController::class, 'store'])->name('store');
     Route::get('/{diplomado}', [DiplomadoController::class, 'show'])->name('show');
 
-    Route::post('/{diplomado}/modulos', [ModuloDiplomadoController::class, 'store'])->name('modulos.store');
+    // Guardar módulo
+    Route::post('/{diplomado}/modulos', [ModuloController::class, 'store'])
+        ->name('modulos.store');
 
-    Route::post('/modulos/{modulo}/materiales', [MaterialDiplomadoController::class, 'store'])->name('materiales.store');
+    // Ver módulo
+    Route::get('/modulos/{modulo}', [ModuloController::class, 'show'])
+        ->name('modulos.show');
 });
-
 // Panel semillero
 
 

@@ -1,0 +1,375 @@
+.diplomados-container{
+    max-width:1300px;
+    margin:auto;
+    padding:40px;
+    background:#ECE8E1;
+    min-height:100vh;
+}
+/*==================================
+CONTENEDOR
+==================================*/
+
+.crear-diplomado-container{
+
+    max-width:900px;
+
+    margin:40px auto;
+
+    background:#ffffff;
+
+    padding:40px;
+
+    border-radius:15px;
+
+    border:1px solid #e7decf;
+
+    box-shadow:0 12px 30px rgba(97,18,50,.10);
+
+}
+
+
+/*==================================
+TÍTULO
+==================================*/
+
+.titulo-formulario{
+
+    margin-bottom:35px;
+
+}
+
+.titulo-formulario h1{
+
+    font-size:34px;
+
+    color:#235b4e;
+
+    margin-bottom:8px;
+
+}
+
+.titulo-formulario p{
+
+    color:#6b7280;
+
+    line-height:1.7;
+
+}
+
+/*==================================
+ERRORES
+==================================*/
+
+.alert-error{
+
+    background:#fef2f2;
+
+    color:#991b1b;
+
+    border-left:5px solid #611232;
+
+    padding:18px;
+
+    border-radius:10px;
+
+    margin-bottom:30px;
+
+}
+
+.alert-error ul{
+
+    margin-top:10px;
+
+    padding-left:20px;
+
+}
+
+/*==================================
+FORMULARIO
+==================================*/
+
+.form-diplomado{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.campo{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.campo label{
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    color:#611232;
+
+}
+
+/*==================================
+INPUTS
+==================================*/
+
+.campo input,
+.campo textarea,
+.campo select{
+
+    width:100%;
+
+    padding:12px 14px;
+
+    border:1px solid #d8cdbb;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    transition:.3s;
+
+    background:#fdfcf9;
+
+}
+
+.campo textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus{
+
+    outline:none;
+
+    border-color:#611232;
+
+    box-shadow:0 0 0 3px rgba(97,18,50,.12);
+
+}
+
+/*==================================
+DOS COLUMNAS
+==================================*/
+
+.dos-columnas{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+
+}
+
+/*==================================
+UPLOAD
+==================================*/
+
+.upload-area{
+
+    border:2px dashed #d8cdbb;
+
+    border-radius:15px;
+
+    background:#f8f5ef;
+
+    min-height:320px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    padding:25px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.upload-area:hover{
+
+    border-color:#611232;
+
+    background:#f5ede4;
+
+}
+
+.upload-content{
+
+    text-align:center;
+
+}
+
+.icono-upload{
+
+    font-size:60px;
+
+    margin-bottom:15px;
+
+}
+
+.upload-content h3{
+
+    color:#235b4e;
+
+    margin-bottom:10px;
+
+}
+
+.upload-content p{
+
+    color:#6b7280;
+
+    margin-bottom:20px;
+
+}
+
+.btn-subir{
+
+    background:#235b4e;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-subir:hover{
+
+    background:#611232;
+
+}
+
+/*==================================
+VISTA PREVIA
+==================================*/
+
+.preview-image{
+
+    display:none;
+
+    width:100%;
+
+    aspect-ratio:16 / 9;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    border:1px solid #d8cdbb;
+
+}
+
+/*==================================
+BOTONES
+==================================*/
+
+.botones{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:15px;
+
+}
+
+.btn-cancelar{
+
+    background:#6b7280;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-cancelar:hover{
+
+    background:#4b5563;
+
+}
+
+.btn-guardar{
+
+    background:#235b4e;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-guardar:hover{
+
+    background:#611232;
+
+}
+
+/*==================================
+RESPONSIVE
+==================================*/
+
+@media(max-width:768px){
+
+    .dos-columnas{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .botones{
+
+        flex-direction:column;
+
+    }
+
+}
