@@ -76,15 +76,7 @@ BOTONES
 }
 
 .btn-editar:hover{
-    background:#9f7a49;
-}
-
-.btn-docente{
-    background:#611232;
-}
-
-.btn-docente:hover{
-    background:#4b0d27;
+   background:#4b0d27;
 }
 
 /*==========================

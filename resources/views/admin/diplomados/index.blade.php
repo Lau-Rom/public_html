@@ -71,18 +71,12 @@
                                 Entrar
                             </a>
 
-                            {{-- Cuando exista la ruta descomenta --}}
-                            {{--
-                        <a href="{{ route('admin.diplomados.edit',$diplomado) }}" class="btn btn-editar">
-                            Editar
-                        </a>
-                        --}}
+                            {{-- Cuando exista la ruta descomenta {{ route('admin.diplomados.edit',$diplomado) }} --}}
+                            <a href="#" class="btn btn-editar">
+                                Editar
+                            </a>
 
-                            {{--
-                        <a href="{{ route('admin.diplomados.docentes',$diplomado) }}" class="btn btn-docente">
-                            Asignar docente
-                        </a>
-                        --}}
+
 
                         </div>
 
