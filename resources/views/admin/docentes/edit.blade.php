@@ -337,6 +337,6 @@
 
     </div>
 
-    @vite('resources/js/docentes/create.js')
-    @vite('resources/js/docentes/edit.js')
+    @vite('resources/js/admin/docentes/create.js')
+    @vite('resources/js/admin/docentes/edit.js')
 </x-app-layout>

@@ -1,0 +1,87 @@
+/* ===========================
+   DASHBOARD ADMIN
+=========================== */
+
+.admin-dashboard {
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(
+        135deg,
+        #ECE8E1 0%,
+        #ECE8E1 45%,
+        #ECE8E1 100%
+    );
+    padding: 35px;
+}
+
+/* ===========================
+   LAYOUT
+=========================== */
+
+.admin-layout {
+    max-width: 1350px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+/* ===========================
+   RESPONSIVE PARA: 
+   Dashboard admin
+   Panel de docentes
+   Formulario de docentes
+=========================== */
+
+@media (max-width: 1024px) {
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .docentes-menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .docente-form-grid,
+    .docente-semilleros-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-dashboard,
+    .docentes-dashboard,
+    .docente-form-dashboard {
+        padding: 20px;
+    }
+
+    .admin-welcome-card,
+    .docentes-header,
+    .docente-form-card {
+        padding: 24px;
+    }
+
+    .admin-welcome-card h1,
+    .docentes-header h1,
+    .docente-form-card h1 {
+        font-size: 26px;
+    }
+
+    .docentes-menu-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .docentes-menu-card {
+        padding: 24px 20px;
+    }
+
+    .docente-form-actions {
+        flex-direction: column;
+    }
+
+    .btn-guardar-docente,
+    .btn-cancelar-docente {
+        width: 100%;
+        text-align: center;
+    }
+}

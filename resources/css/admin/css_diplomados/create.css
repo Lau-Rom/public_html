@@ -358,18 +358,121 @@ BOTONES
 RESPONSIVE
 ==================================*/
 
-@media(max-width:768px){
+/* Tablets */
+@media(max-width:900px){
+
+    .diplomados-container{
+        padding:30px 22px;
+    }
+
+    .crear-diplomado-container{
+        margin:30px auto;
+        padding:30px;
+    }
+
+    .titulo-formulario h1{
+        font-size:30px;
+    }
 
     .dos-columnas{
-
         grid-template-columns:1fr;
+        gap:20px;
+    }
+}
 
+/* Celulares */
+@media(max-width:600px){
+
+    .diplomados-container{
+        padding:20px 15px;
+    }
+
+    .crear-diplomado-container{
+        margin:20px auto;
+        padding:22px;
+        border-radius:14px;
+    }
+
+    .titulo-formulario{
+        margin-bottom:25px;
+    }
+
+    .titulo-formulario h1{
+        font-size:25px;
+        line-height:1.2;
+    }
+
+    .titulo-formulario p{
+        font-size:14px;
+    }
+
+    .form-diplomado{
+        gap:20px;
+    }
+
+    .campo label{
+        font-size:14px;
+    }
+
+    .campo input,
+    .campo textarea,
+    .campo select{
+        font-size:14px;
+        padding:11px 12px;
+    }
+
+    .upload-area{
+        min-height:230px;
+        padding:20px;
+    }
+
+    .icono-upload{
+        font-size:45px;
+    }
+
+    .upload-content h3{
+        font-size:18px;
+    }
+
+    .upload-content p{
+        font-size:14px;
     }
 
     .botones{
-
-        flex-direction:column;
-
+        flex-direction:column-reverse;
+        gap:12px;
     }
 
+    .btn-cancelar,
+    .btn-guardar,
+    .btn-subir{
+        width:100%;
+        text-align:center;
+        padding:12px;
+    }
+
+    .alert-error{
+        padding:15px;
+        font-size:14px;
+    }
+}
+
+/* Celulares pequeños */
+@media(max-width:380px){
+
+    .diplomados-container{
+        padding:16px 10px;
+    }
+
+    .crear-diplomado-container{
+        padding:18px;
+    }
+
+    .titulo-formulario h1{
+        font-size:22px;
+    }
+
+    .upload-area{
+        min-height:200px;
+    }
 }

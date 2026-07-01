@@ -22,9 +22,9 @@
 
                 <h1>{{ $diplomado->nombre }}</h1>
 
-                <p>
-                    {{ $diplomado->descripcion }}
-                </p>
+                <div class="contenido-editor">
+                    {!! $diplomado->descripcion !!}
+                </div>
 
                 <div class="datos-diplomado">
 
@@ -80,10 +80,9 @@
                         <label>Título del módulo</label>
                         <input type="text" name="titulo" value="{{ old('titulo') }}" required>
                     </div>
-
                     <div class="campo">
                         <label>Descripción</label>
-                        <textarea name="descripcion" rows="4">{{ old('descripcion') }}</textarea>
+                        <textarea id="descripcionModulo" name="descripcion" rows="4">{{ old('descripcion') }}</textarea>
                     </div>
 
                     <div class="campo">
@@ -122,15 +121,16 @@
 
                                     <h3>{{ $modulo->titulo }}</h3>
 
-                                    <p>
-                                        {{ $modulo->descripcion ?? 'Sin descripción.' }}
-                                    </p>
+                                    <div class="contenido-editor">
+                                        {!! $modulo->descripcion ?: 'Sin descripción.' !!}
+                                    </div>
 
                                     <div class="modulo-meta">
                                         <span>📄 {{ $modulo->materiales->count() }} materiales</span>
                                     </div>
 
                                 </div>
+
 
                                 <div class="modulo-acciones">
 
@@ -139,8 +139,21 @@
                                         Entrar
                                     </a>
 
-                                </div>
+                                    <a href="{{ route('admin.diplomados.modulos.edit', $modulo) }}" class="btn-editar">
+                                        Editar
+                                    </a>
+                                    <form action="{{ route('admin.diplomados.modulos.destroy', $modulo) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
 
+                                        <button type="submit" class="btn-eliminar"
+                                            onclick="return confirm('¿Seguro que deseas eliminar este módulo?')">
+                                            Eliminar
+                                        </button>
+                                    </form>
+
+                                </div>
                             </div>
                         @endforeach
 
@@ -158,5 +171,6 @@
         </div>
 
     </div>
+    @vite('resources/js/admin/diplomados/create.js')
 
 </x-app-layout>

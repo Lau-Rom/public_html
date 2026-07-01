@@ -1,6 +1,14 @@
+body{
+    background:#ECE8E1;
+}
+
+main{
+    background:#ECE8E1;
+}
 .diplomados-container{
+    width:100%;
     max-width:1300px;
-    margin:auto;
+    margin:0 auto;
     padding:40px;
     background:#ECE8E1;
     min-height:100vh;
@@ -33,7 +41,26 @@ HEADER
 /*==========================
 BOTONES
 ===========================*/
+.header-acciones{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
 
+.btn-salir{
+    background:#611232;
+    color:white;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:12px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.btn-salir:hover{
+    background:#4a0d25;
+    transform:translateY(-2px);
+}
 .btn-crear{
     background:#235b4e;
     color:white;
@@ -68,15 +95,19 @@ BOTONES
 }
 
 .btn-entrar:hover{
-    background:#611232;
+    background:#0ea784;
 }
 
 .btn-editar{
     background:#b38e5d;
 }
 
+.btn-eliminarr{
+    background:#5b010d;
+}
+
 .btn-editar:hover{
-   background:#4b0d27;
+   background:#ed9015;
 }
 
 /*==========================
@@ -229,4 +260,130 @@ SIN REGISTROS
 .sin-diplomados p{
     color:#6b7280;
     margin-bottom:25px;
+}
+/*==========================
+RESPONSIVE
+===========================*/
+
+/* Tablets */
+@media (max-width: 992px){
+    .diplomados-container{
+        padding:30px 22px;
+    }
+
+    .header-diplomados{
+        align-items:flex-start;
+    }
+
+    .header-diplomados h1{
+        font-size:30px;
+    }
+
+    .diplomados-grid{
+        grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+        gap:20px;
+    }
+
+    .card-diplomado{
+        padding:22px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 600px){
+    .diplomados-container{
+        padding:25px 15px;
+    }
+
+    .header-diplomados{
+        flex-direction:column;
+        align-items:stretch;
+        gap:15px;
+        margin-bottom:25px;
+    }
+
+    .header-diplomados h1{
+        font-size:26px;
+    }
+
+    .header-diplomados p{
+        font-size:14px;
+    }
+
+    .header-acciones{
+    width:100%;
+    flex-direction:column;
+    }
+
+    .btn-crear,
+    .btn-salir{
+    width:100%;
+    text-align:center;
+    padding:12px;
+    }
+
+    .diplomados-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .card-diplomado{
+        padding:18px;
+        border-radius:18px;
+    }
+
+    .card-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .card-header h2{
+        font-size:20px;
+    }
+
+    .descripcion{
+        font-size:14px;
+        margin-bottom:20px;
+    }
+
+    .info-diplomado{
+        padding:14px;
+        gap:10px;
+    }
+
+    .info-item{
+        font-size:14px;
+        align-items:flex-start;
+    }
+
+    .acciones-diplomado{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+        padding:11px;
+    }
+
+    .sin-diplomados{
+        padding:35px 20px;
+    }
+}
+
+/* Celulares muy pequeños */
+@media (max-width: 380px){
+    .header-diplomados h1{
+        font-size:23px;
+    }
+
+    .card-header h2{
+        font-size:18px;
+    }
+
+    .estado{
+        font-size:11px;
+        padding:5px 10px;
+    }
 }

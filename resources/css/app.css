@@ -1,74 +1,21 @@
-@import './css_principal/dashboard.css';
-@import './css_principal/menu.css';
+@import './admin/CKEDITOR.css';
+@import './admin/css_principal/dashboard.css';
+@import './admin/css_principal/menu.css';
 
-@import './css_docentes/index.css';
-@import './css_docentes/create.css';
-@import './css_docentes/buscar.css';
+@import './admin/css_docentes/index.css';
+@import './admin/css_docentes/create.css';
+@import './admin/css_docentes/buscar.css';
 
-@import './css_diplomados/index.css';
-@import './css_diplomados/create.css';
-@import './css_diplomados/show.css';
+@import './admin/css_diplomados/index.css';
+@import './admin/css_diplomados/create.css';
+@import './admin/css_diplomados/show_diplomados.css';
+@import './admin/css_diplomados/show_modulos.css';
+
+@import './admin/css_materiales/create.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ===========================
-   RESPONSIVE PARA: 
-   Dashboard admin
-   Panel de docentes
-   Formulario de docentes
-=========================== */
 
-@media (max-width: 1024px) {
-    .admin-layout {
-        grid-template-columns: 1fr;
-    }
 
-    .docentes-menu-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .docente-form-grid,
-    .docente-semilleros-box {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 640px) {
-    .admin-dashboard,
-    .docentes-dashboard,
-    .docente-form-dashboard {
-        padding: 20px;
-    }
-
-    .admin-welcome-card,
-    .docentes-header,
-    .docente-form-card {
-        padding: 24px;
-    }
-
-    .admin-welcome-card h1,
-    .docentes-header h1,
-    .docente-form-card h1 {
-        font-size: 26px;
-    }
-
-    .docentes-menu-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .docentes-menu-card {
-        padding: 24px 20px;
-    }
-
-    .docente-form-actions {
-        flex-direction: column;
-    }
-
-    .btn-guardar-docente,
-    .btn-cancelar-docente {
-        width: 100%;
-        text-align: center;
-    }
-}

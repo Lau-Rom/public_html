@@ -1,0 +1,112 @@
+/*==================================================
+CKEDITOR RESPONSIVO
+==================================================*/
+
+.ck.ck-editor {
+    width: 100%;
+    max-width: 100%;
+}
+
+.ck.ck-editor__main {
+    width: 100%;
+}
+
+.ck-editor__editable {
+    min-height: 180px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.ck.ck-toolbar {
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .ck.ck-toolbar {
+        overflow-x: auto;
+    }
+
+    .ck-editor__editable {
+        min-height: 140px;
+    }
+}
+
+/*==================================================
+CONTENIDO GENERADO POR CKEDITOR
+==================================================*/
+
+.contenido-editor {
+    line-height: 1.7;
+    color: #374151;
+    overflow-wrap: break-word;
+}
+
+.contenido-editor h1,
+.contenido-editor h2,
+.contenido-editor h3,
+.contenido-editor h4,
+.contenido-editor h5,
+.contenido-editor h6 {
+    color: #235b4e;
+    margin: 1.2rem 0 .7rem;
+    font-weight: 600;
+}
+
+.contenido-editor p {
+    margin-bottom: 1rem;
+}
+
+.contenido-editor ul {
+    list-style: disc;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.contenido-editor ol {
+    list-style: decimal;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.contenido-editor ul ul {
+    list-style: circle;
+}
+
+.contenido-editor ol ol {
+    list-style: lower-alpha;
+}
+
+.contenido-editor li {
+    display: list-item;
+    margin-bottom: .35rem;
+}
+
+.contenido-editor a {
+    color: #2563eb;
+    text-decoration: underline;
+}
+/* Listas dentro del área de escritura de CKEditor */
+.ck-content ul {
+    list-style-type: disc !important;
+    padding-left: 2rem !important;
+    margin-left: 1rem !important;
+}
+
+.ck-content ol {
+    list-style-type: decimal !important;
+    padding-left: 2rem !important;
+    margin-left: 1rem !important;
+}
+
+.ck-content li {
+    display: list-item !important;
+    margin-bottom: .35rem;
+}
+
+.ck-content ul ul {
+    list-style-type: circle !important;
+}
+
+.ck-content ol ol {
+    list-style-type: lower-alpha !important;
+}

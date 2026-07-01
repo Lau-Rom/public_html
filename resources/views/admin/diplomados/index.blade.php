@@ -1,7 +1,4 @@
 <x-app-layout>
-
-
-
     <div class="diplomados-container">
 
         <div class="header-diplomados">
@@ -11,9 +8,15 @@
                 <p>Administra todos los diplomados del sistema.</p>
             </div>
 
-            <a href="{{ route('admin.diplomados.create') }}" class="btn-crear">
-                + Crear Diplomado
-            </a>
+            <div class="header-acciones">
+                <a href="{{ route('admin.diplomados.create') }}" class="btn-crear">
+                    + Crear Diplomado
+                </a>
+
+                <a href="{{ route('dashboard') }}" class="btn-salir">
+                    Salir
+                </a>
+            </div>
 
         </div>
 
@@ -39,9 +42,11 @@
 
                         </div>
 
-                        <p class="descripcion">
-                            {{ $diplomado->descripcion }}
-                        </p>
+                        <div class="contenido-editor">
+                            <p class="descripcion">
+                                {!! $diplomado->descripcion !!}
+                            </p>
+                        </div>
 
                         <div class="info-diplomado">
 
@@ -54,13 +59,19 @@
                             <div class="info-item">
                                 <span>📚</span>
                                 <strong>Módulos:</strong>
-                                Próximamente
+                                {{ $diplomado->modulos_count }}
+                                {{ $diplomado->modulos_count == 1 ? 'módulo' : 'módulos' }}
                             </div>
 
+
+
                             <div class="info-item">
-                                <span>👨‍🏫</span>
-                                <strong>Docentes:</strong>
-                                Próximamente
+                                <span>📄</span>
+                                <strong>Materiales:</strong>
+
+                                {{ $diplomado->modulos->sum(fn($modulo) => $modulo->materiales->count()) }}
+
+                                {{ $diplomado->modulos->sum(fn($modulo) => $modulo->materiales->count()) == 1 ? 'material' : 'materiales' }}
                             </div>
 
                         </div>
@@ -71,12 +82,21 @@
                                 Entrar
                             </a>
 
-                            {{-- Cuando exista la ruta descomenta {{ route('admin.diplomados.edit',$diplomado) }} --}}
-                            <a href="#" class="btn btn-editar">
+                            <a href="{{ route('admin.diplomados.edit', $diplomado) }}" class="btn btn-editar">
                                 Editar
                             </a>
 
+                            {{-- AQUI FALTA QUE ELIMINE MODULOS, MATERIALES, ETC --}}
+                            <form action="{{ route('admin.diplomados.destroy', $diplomado->id) }}" method="POST"
+                                style="display:inline;">
+                                @csrf
+                                @method('DELETE')
 
+                                <button type="submit" class="btn btn-eliminarr"
+                                    onclick="return confirm('¿Seguro que deseas eliminar este diplomado?')">
+                                    Eliminar
+                                </button>
+                            </form>
 
                         </div>
 

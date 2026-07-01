@@ -1,0 +1,123 @@
+.form-material {
+    background: #ffffff;
+    border: 1px solid #e7decf;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(97, 18, 50, .08);
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    color: #611232;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #d8cfc2;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 15px;
+    background: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #611232;
+    box-shadow: 0 0 0 3px rgba(97, 18, 50, .12);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn-cancelar {
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: #e7decf;
+    color: #4b3b35;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.btn-cancelar:hover {
+    background: #d8cfc2;
+}
+
+.error {
+    display: block;
+    color: #b42318;
+    margin-top: 6px;
+    font-size: 13px;
+}
+.ayuda-campo {
+    display: block;
+    margin-top: 6px;
+    color: #6b5f58;
+    font-size: 13px;
+}
+
+.campo-archivo,
+.campo-url,
+.campo-descripcion {
+    transition: all .2s ease;
+}
+.btn-eliminar-material{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:8px 16px;
+
+    border-radius:10px;
+
+    background:#fff2f2;
+
+    color:#b42318;
+
+    border:1px solid #f3b4b4;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.btn-eliminar-material:hover{
+    background:#b42318;
+    color:#fff;
+    border-color:#b42318;
+}
+
+.acciones-header-modulo {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.archivo-link{
+    color:#042e6d;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.archivo-link:hover{
+    text-decoration:underline;
+}

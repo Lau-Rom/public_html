@@ -1,3 +1,4 @@
+
 /*==================================
 PANEL DIPLOMADO SHOW
 ==================================*/
@@ -143,6 +144,23 @@ CONTENIDO
 }
 
 /*==================================
+EDITAR MÓDULO
+==================================*/
+
+.editar-modulo-container{
+    max-width: 1200px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.editar-modulo-container .form-modulo-card{
+    width: 100%;
+    max-width: 700px;
+}
+
+/*==================================
 FORM MÓDULO
 ==================================*/
 
@@ -220,6 +238,7 @@ MÓDULOS
     border-radius:16px;
     padding:25px;
     box-shadow:0 12px 30px rgba(97,18,50,.10);
+    min-width:0;
 }
 
 .section-header{
@@ -243,7 +262,7 @@ MÓDULOS
 
 .modulo-card{
     display:grid;
-    grid-template-columns:60px 1fr auto;
+    grid-template-columns:60px minmax(0, 1fr) 290px;
     gap:20px;
     align-items:center;
     border:1px solid #e7decf;
@@ -271,15 +290,29 @@ MÓDULOS
     font-weight:bold;
 }
 
+.modulo-info{
+    min-width:0;
+}
+
 .modulo-info h3{
     color:#235b4e;
     margin-bottom:6px;
+    overflow-wrap:anywhere;
 }
 
-.modulo-info p{
+.modulo-info p,
+.contenido-editor{
     color:#6b7280;
     line-height:1.6;
     margin-bottom:10px;
+    overflow-wrap:anywhere;
+}
+
+.contenido-editor img,
+.contenido-editor video,
+.contenido-editor iframe{
+    max-width:100%;
+    height:auto;
 }
 
 .modulo-meta{
@@ -288,19 +321,73 @@ MÓDULOS
     font-weight:bold;
 }
 
-.btn-entrar-modulo{
-    background:#235b4e;
-    color:white;
-    text-decoration:none;
-    padding:10px 18px;
+/*==================================
+ACCIONES DEL MÓDULO
+==================================*/
+
+.modulo-acciones{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.modulo-acciones form{
+    margin:0;
+}
+
+/*==================================
+BOTONES
+==================================*/
+
+.btn-entrar-modulo,
+.btn-editar,
+.btn-eliminar{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:85px;
+    padding:10px 16px;
+    border:none;
     border-radius:10px;
+    color:#fff;
+    text-decoration:none;
+    font-size:15px;
+    line-height:1;
+    font-family:inherit;
     font-weight:bold;
+    cursor:pointer;
     transition:.3s;
 }
 
-.btn-entrar-modulo:hover{
-    background:#611232;
+.btn-entrar-modulo{
+    background:#235b4e;
 }
+
+.btn-entrar-modulo:hover{
+    background:#0ba783;
+}
+
+.btn-editar{
+    background:#b38e5d;
+}
+
+.btn-editar:hover{
+    background:#ed9015;
+}
+
+.btn-eliminar{
+    background:#5b010d;
+}
+
+.btn-eliminar:hover{
+    background:#7d0b18;
+}
+
+/*==================================
+SIN MÓDULOS
+==================================*/
 
 .sin-modulos{
     background:#f8f5ef;
@@ -319,14 +406,39 @@ MÓDULOS
     color:#6b7280;
 }
 
+
+.form-modulo-card{
+    min-width:0;
+    max-width:100%;
+    overflow:hidden;
+}
+
+.campo{
+    min-width:0;
+    max-width:100%;
+}
+
+.campo .ck.ck-editor{
+    max-width:100%;
+}
+
 /*==================================
 RESPONSIVE
 ==================================*/
 
 @media(max-width:1000px){
 
+    .panel-diplomado-container{
+        padding:30px 22px;
+    }
+
     .hero-diplomado{
         grid-template-columns:1fr;
+        padding:25px;
+    }
+
+    .hero-info h1{
+        font-size:32px;
     }
 
     .contenido-diplomado{
@@ -337,26 +449,105 @@ RESPONSIVE
         position:static;
     }
 
+    .datos-diplomado{
+        grid-template-columns:repeat(2,1fr);
+    }
 
+    .modulo-card{
+        grid-template-columns:55px minmax(0, 1fr);
+    }
+
+    .modulo-acciones{
+        grid-column:2;
+        justify-content:flex-start;
+    }
 }
-
 @media(max-width:640px){
 
     .panel-diplomado-container{
+        padding:20px 15px;
+    }
+
+    .hero-diplomado{
         padding:20px;
+        gap:22px;
+    }
+
+    .hero-info h1{
+        font-size:26px;
+        line-height:1.2;
     }
 
     .datos-diplomado{
         grid-template-columns:1fr;
     }
 
+    .contenido-diplomado{
+        grid-template-columns:minmax(0,1fr);
+        gap:22px;
+        width:100%;
+    }
+
+    .form-modulo-card,
+    .modulos-section{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        overflow:hidden;
+        padding:20px;
+    }
 
     .modulo-card{
         grid-template-columns:1fr;
+        gap:14px;
+        padding:18px;
     }
 
     .modulo-acciones{
-        margin-top:10px;
+        grid-column:auto;
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
     }
 
+    .modulo-acciones a,
+    .modulo-acciones form{
+        flex:1;
+    }
+
+    .modulo-acciones button{
+        width:100%;
+    }
+
+    .btn-entrar-modulo,
+    .btn-editar,
+    .btn-eliminar{
+        width:100%;
+        font-size:15px;
+    }
+}
+@media(max-width:380px){
+
+    .panel-diplomado-container{
+        padding:18px 12px;
+    }
+
+    .hero-info h1{
+        font-size:23px;
+    }
+
+    .badge-estado{
+        font-size:12px;
+        padding:6px 12px;
+    }
+
+    .form-modulo-card,
+    .modulos-section,
+    .hero-diplomado{
+        padding:16px;
+    }
+
+    .modulo-info h3{
+        font-size:17px;
+    }
 }
